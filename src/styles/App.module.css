@@ -1,0 +1,5 @@
+@import "../styles/vars.css";
+
+.App {
+  background: linear-gradient(to bottom, #654d23, #6f511f, #7a541a, #865715, #925910, #9e600e, #a9660c, #b56d09, #c27a0a, #ce880b, #da960c, #e6a50e);
+};

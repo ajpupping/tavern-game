@@ -1,0 +1,11 @@
+:root {
+    --text-color: #f7f2e1;
+    --primary-color: #135d31;
+    --secondary-color: #b1f0bf;
+    --link-color: #f396ee;
+    --dark-color: #221804;
+    --button-color: #f3e5b6;
+    --background-color: #000;
+    --box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    --font-nunito: "Nunito"
+}

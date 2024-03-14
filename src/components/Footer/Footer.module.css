@@ -1,0 +1,7 @@
+@import "../../styles/vars.css";
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--button-color);
+}
