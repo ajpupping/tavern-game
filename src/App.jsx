@@ -1,32 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './components/Home/Home.jsx';
-import InventoryPage from './components/Inventory/Inventory.jsx';
-import PlayPage from './components/Play/Play.jsx';
-import RegisterPage from './components/Register/Register.jsx';
-import LoginPage from './components/Login/Login.jsx';
-import NotFoundPage from './components/NotFound/NotFound.jsx';
 
+// Importing page components
+import HomePage from './components/Home/Home';
+import Play from './components/Play/Play';
+import Inventory from './components/Inventory/Inventory';
+import RegisterPage from './components/Register/Register';
+import LoginPage from './components/Login/Login';
+import NotFoundPage from './components/NotFound/NotFound';
 
+// Importing styles
 import styles from './styles/App.module.css';
 
-import { Header } from './components/Header/Header.jsx';
-import { Footer } from './components/Footer/Footer.jsx';
+// Importing shared components
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
+    // State to track the amount of gold the player has
+    const [gold, setGold] = useState(100);
+
+    // Function to update the gold amount, used by child components (inventory and play)
+    const updateGold = (amount) => {
+        setGold(gold + amount);
+    };
+
     return (
         <div className={styles.App}>
-        <Header />
-        <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/inventory" element={<InventoryPage />} />
-            <Route path="/play" element={<PlayPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        <Footer />
-    </div>
+            <Header />
+
+            <Routes>
+                {/* Displays Home on root path */}
+                <Route path="/" element={<HomePage />} />
+
+                {/* Pass gold and updateGold as props directly to Play and Inventory */}
+                <Route path="/play" element={<Play gold={gold} updateGold={updateGold} />} />
+                <Route path="/inventory" element={<Inventory gold={gold} />} />
+
+                {/* Register and Login pages */}
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/login" element={<LoginPage />} />
+
+                {/* 404 page */}
+                <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+
+            <Footer />
+        </div>
     );
 }
 

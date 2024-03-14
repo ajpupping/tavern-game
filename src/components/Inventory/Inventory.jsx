@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import PropTypes from 'prop-types';
 
 import styles from '../Inventory/Inventory.module.css';
 
-export const Inventory = () => {
-
-    const [gold, setGold] = useState(100);
+export const Inventory = ({gold}) => {
 
     return (
 
@@ -28,3 +28,7 @@ export const Inventory = () => {
 }
 
 export default Inventory;
+
+Inventory.propTypes = {
+    gold: PropTypes.number.isRequired
+};
